@@ -29,7 +29,12 @@ jobs:
         Rscript -e "install.packages('httr2')"
         Rscript -e "install.packages('jsonlite')"
 
-        Rscript -e "install.packages('devtools')"
+    - name: Install devtools
+      run: |
+        Rscript -e "install.packages('devtools', repos = 'https://cloud.r-project.org/')"
+
+    - name: Install local package
+      run: |
         Rscript -e "devtools::install('.')"
 
     - name: Run the R API
