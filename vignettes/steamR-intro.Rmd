@@ -1,0 +1,82 @@
+---
+title: "Introduction to steamR"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to steamR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+# Load the steamR package
+library(steamR)
+# Set your API key (replace with your actual key)
+api_key <- "2E603E850E37D5636F36F229777BDB15"
+# Example Steam ID for testing
+steam_id <- "76561198105405940"
+```
+
+# Introduction
+
+This vignette demonstrates how to use the **steamR** package (formerly known as SteamAPI) to retrieve data from the Steam API and visualize it. We will:
+
+1.  Retrieve basic user summaries.
+2.  Retrieve the list of owned games.
+3.  Create a plot that visualizes playtime data for the owned games.
+
+# Retrieve Data
+
+## Get Player Summaries
+
+```{r player-summaries, echo=TRUE}
+player_info <- get_player_summaries(api_key, steam_id)
+print(player_info)
+```
+
+## Get Owned Games
+
+```{r owned-games, echo=TRUE}
+owned_games <- get_owned_games(api_key, steam_id, include_appinfo = TRUE)
+head(owned_games)
+```
+
+# Plotting Example: From Zero to Graph
+
+In this section, we create a bar plot showing the total playtime (in hours) for each owned game.
+
+```{r plot-owned-games, fig.width=7, fig.height=5, echo=TRUE}
+if (!is.null(owned_games) && nrow(owned_games) > 0) {
+  # Ensure the necessary columns are present; here we assume 'name' and 'playtime_forever'
+  if("name" %in% names(owned_games) && "playtime_forever" %in% names(owned_games)) {
+    # Convert playtime from minutes to hours
+    owned_games$playtime_hours <- owned_games$playtime_forever / 60
+    
+    # Order games by playtime
+    ordered_games <- owned_games[order(owned_games$playtime_hours, decreasing = TRUE), ]
+    
+    # Create a bar plot with game names on the x-axis and playtime (hours) on the y-axis
+    barplot(ordered_games$playtime_hours,
+            names.arg = ordered_games$name,
+            las = 2,                 # rotate names for better readability
+            col = "skyblue",
+            main = "Playtime (Hours) for Owned Games",
+            ylab = "Playtime (Hours)")
+  } else {
+    message("The owned games data does not have the expected columns ('name' and 'playtime_forever').")
+  }
+} else {
+  message("No owned games data available to plot.")
+}
+```
+
+# Conclusion
+
+This vignette provided a quick tour of the **steamR** package:\
+- Retrieving user and game data from the Steam API\
+- Performing basic data wrangling\
+- Creating a simple plot to visualize playtime data
+
+For more information, please refer to the detailed documentation of each function.
+

@@ -1,15 +1,14 @@
-Package: SteamAPI
+Package: steamR
 Type: Package
-Title: WRetrieve User Data and Information from Steam
+Title: Retrieve User Data and Information from Steam
 Version: 0.1.0
-Author: Zifei Chen
-        Tianmu Wang
-        Tyler Stevenson
-Maintainer: cyrilgolberg@gmail.com
-            tianmu02@student.ubc.ca
-            stev7198@gmail.com
-Description:An R package that interacts with the Steam API to retrieve user data such as friends, 
-owned games, achievements, and in-game statistics.
-License: MIT License
+Authors@R: c(person("Zifei Chen", role = c("aut", "cre"), email = "cyrilgolberg@gmail.com"), person("Tianmu Wang", role = "aut", email = "tianmu02@student.ubc.ca"), person("Tyler Stevenson", role = "aut", email = "stev7198@gmail.com"))
+Description: An R package that interacts with the Steam API to retrieve user data such as friends, owned games, achievements, and in-game statistics.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Depends: R (>= 3.5.0)
+Imports: httr2, jsonlite
+Suggests: testthat, knitr, rmarkdown
+RoxygenNote: 7.3.2
+VignetteBuilder: knitr
