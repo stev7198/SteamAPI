@@ -21,8 +21,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        install.packages("httr2")
-        install.packages("jsonlite")
+        Rscript -e "install.packages('httr2')"
+        Rscript -e "install.packages('jsonlite')"
 
     - name: Run the R API
       run: |
