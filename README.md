@@ -8,9 +8,9 @@ Steam is a digital distribution platform mainly used for downloading, purchasing
 
 -    A valid Steam API key is required to authenticate requests to Steam’s Web API.
 
-2.  Python Environment & Dependencies:
+2.  R Environment & Dependencies:
 
--    The app is built using Python and depends on libraries like requests to handle HTTP calls.
+-    The app is built using R and depends on httr2 and jsonlite libraries.
 
 3.  Steam User Data:
 
@@ -20,7 +20,7 @@ Steam is a digital distribution platform mainly used for downloading, purchasing
 
 -    Since the app interacts with remote API endpoints, a reliable internet connection is required.
 
-##  What It Does:
+## What It Does:
 
 1.  Fetches Steam User Data:
 
