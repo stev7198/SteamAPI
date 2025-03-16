@@ -17,7 +17,6 @@
 #'   \item Develop interactive dashboards for data visualization.
 #' }
 #'
-#' @docType package
 #' @name steamR
 NULL
 

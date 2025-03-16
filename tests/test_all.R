@@ -2,7 +2,7 @@
 
 # Load the SteamAPI package
 library(steamR)
-
+print("If the test shows 403 Error, remember to use your own")
 # Set your API key and Steam ID for testing
 api_key <- "2E603E850E37D5636F36F229777BDB15"  # Replace with your actual API key
 steam_id <- "76561198105405940"
