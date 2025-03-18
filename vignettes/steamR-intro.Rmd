@@ -1,6 +1,6 @@
 ---
 title: "Introduction to steamR"
-author: "Your Name"
+author: "steamR"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
